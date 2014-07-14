@@ -31,7 +31,7 @@ esac
 echo ""
 echo "Updating jenv..."
 
-JENV_VERSION="@JENV_VERSION@"
+JENV_VERSION="0.1.0"
 if [ -z "${JENV_DIR}" ]; then
 	JENV_DIR="$HOME/.jenv"
 	if [[ "${cygwin}" == 'true' ]]; then

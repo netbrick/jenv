@@ -16,7 +16,7 @@
 #   limitations under the License.
 #
 # jenv version
-export JENV_VERSION="@JENV_VERSION@"
+export JENV_VERSION="0.1.0"
 # platform, such as Linux, Unix, Darwin or CYGWIN etc
 export JENV_OS_NAME=$(uname)
 # matchine platform, such as x86_64, i686, i386
@@ -102,7 +102,7 @@ __jenvtool_initialize() {
             ;;
     esac
 
-    JENV_SERVICE_DEFAULT="@JENV_SERVICE@"
+    JENV_SERVICE_DEFAULT="http://get.jenv.mvnsearch.org"
     JENV_CANDIDATES_DEFAULT=("groovy" "grails" "griffon" "gradle" "vertx")
 
     if [[ -z "${JENV_DIR}" ]]; then

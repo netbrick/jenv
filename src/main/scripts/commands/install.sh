@@ -35,8 +35,8 @@ case "`uname`" in
 esac
 
 # Global variables
-JENV_SERVICE="@JENV_SERVICE@"
-JENV_VERSION="@JENV_VERSION@"
+JENV_SERVICE="http://get.jenv.mvnsearch.org"
+JENV_VERSION="0.1.0"
 JENV_DIR="$HOME/.jenv"
 if [[ "${cygwin}" == 'true' ]]; then
    JENV_DIR="/cygdrive/c/jenv"
