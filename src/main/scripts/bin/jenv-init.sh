@@ -190,7 +190,7 @@ __jenvtool_initialize
 # change directory with jenvrc support
 cd () {
   builtin cd "$@"
-  if [[ -f "${PWD}/jenvrc" ]]; then
+  if [[ -f "${PWD}/.jenvrc" ]]; then
      echo "==============jenv setup======================"
      while read entry
      do
@@ -205,6 +205,6 @@ cd () {
             unset candidate1
             unset version1
        fi
-     done < "${PWD}/jenvrc"
+     done < "${PWD}/.jenvrc"
   fi
 }
