@@ -113,7 +113,9 @@ __jenvtool_initialize() {
         fi
         export JENV_DIR
     fi
+
     mkdir -p $JENV_DIR/candidates
+    mkdir -p $JENV_DIR/tmp
 
     JENV_SERVICE="${JENV_SERVICE_DEFAULT}"
     export JENV_SERVICE
