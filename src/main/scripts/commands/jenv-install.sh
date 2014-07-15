@@ -55,7 +55,7 @@ function __jenvtool_install {
         # validate installed?
     	if [[ -d "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" || -h "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" ]]; then
     		__jenvtool_utils_echo_red "Stop! ${CANDIDATE} ${VERSION} is already installed."
-    		return 1
+    		return 0	# There is return 0 because of puppet module
     	fi
 
     	__jenvtool_install_remote_candidate "${CANDIDATE}" "${VERSION}" || return 1
