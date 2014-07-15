@@ -53,7 +53,7 @@ function __jenvtool_install {
             fi
         fi
         # validate installed?
-    	if [[ -d "${JENV_DIR}/${CANDIDATE}/${VERSION}" || -h "${JENV_DIR}/${CANDIDATE}/${VERSION}" ]]; then
+    	if [[ -d "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" || -h "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" ]]; then
     		__jenvtool_utils_echo_red "Stop! ${CANDIDATE} ${VERSION} is already installed."
     		return 1
     	fi
