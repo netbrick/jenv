@@ -134,31 +134,30 @@ function __jenvtool_install_remote_candidate {
 	CANDIDATE="$1"
 	VERSION="$2"
 	DOWNLOAD_URL="$3"
-	# install from archives directory
-    echo "Installing: ${CANDIDATE} ${VERSION}"
-    # find install url from jenv.mvnsearch.org
-    if [[ -z "${DOWNLOAD_URL}" ]]; then
-       repo=$(__jenvtool_repo_locate "${CANDIDATE}" "${VERSION}")
-       if [ -f "${JENV_DIR}/repo/${repo}/url.txt" ] ; then
-          repo_url=$(cat "${JENV_DIR}/repo/${repo}/url.txt")
-          echo "Parsing http://jenv.mvnsearch.org/candidate/${CANDIDATE}/download/${VERSION}/${JENV_OS_NAME}/${JENV_MACHINE_PLATFORM}"
-          DOWNLOAD_URL=$(curl -L -s "http://jenv.mvnsearch.org/candidate/${CANDIDATE}/download/${VERSION}/${JENV_OS_NAME}/${JENV_MACHINE_PLATFORM}")
-       else
-          echo "${repo} url is not available"
-          return 1
-       fi
-    fi
-    if __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "http://" && __jenvtool_utils_string_contains "${DOWNLOAD_URL}" ".zip" ; then
-       __jenvtool_candidate_download "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}"  || return 1
-       mkdir -p "${JENV_DIR}/candidates/${CANDIDATE}"
-       unzip -oq "${JENV_DIR}/archives/${CANDIDATE}-${VERSION}.zip" -d "${JENV_DIR}/tmp/"
-       mv ${JENV_DIR}/tmp/*-${VERSION} "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
-    elif __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "git"; then
-       __jenvtool_install_git_repository "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}" || return 1
-    elif __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "svn"; then
-       __jenvtool_install_svn_repository "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}" || return 1
-    else
-       __jenvtool_utils_echo_red "${DOWNLOAD_URL}"
-       return 1
-    fi
+    	echo "Installing: ${CANDIDATE} ${VERSION}"
+    	# find download url from remote repository
+    	if [[ -z "${DOWNLOAD_URL}" ]]; then
+       		repo=$(__jenvtool_repo_locate "${CANDIDATE}" "${VERSION}")
+       		if [ -f "${JENV_DIR}/repo/${repo}/url.txt" ] ; then
+          		repo_url=$(cat "${JENV_DIR}/repo/${repo}/url.txt")
+          		echo "Parsing ${repo_url}/candidate/${CANDIDATE}/download/${VERSION}/${JENV_OS_NAME}/${JENV_MACHINE_PLATFORM}"
+          		DOWNLOAD_URL=$(curl -L -s "${repo_url}/candidate/${CANDIDATE}/download/${VERSION}/${JENV_OS_NAME}/${JENV_MACHINE_PLATFORM}")
+       		else
+          		echo "${repo} url is not available"
+          		return 1
+       		fi
+    	fi
+    	if __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "http://" && __jenvtool_utils_string_contains "${DOWNLOAD_URL}" ".zip" ; then
+       		__jenvtool_candidate_download "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}"  || return 1
+       		mkdir -p "${JENV_DIR}/candidates/${CANDIDATE}"
+       		unzip -oq "${JENV_DIR}/archives/${CANDIDATE}-${VERSION}.zip" -d "${JENV_DIR}/tmp/"
+       		mv ${JENV_DIR}/tmp/*-${VERSION} "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
+    	elif __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "git"; then
+       		__jenvtool_install_git_repository "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}" || return 1
+    	elif __jenvtool_utils_string_contains "${DOWNLOAD_URL}" "svn"; then
+       		__jenvtool_install_svn_repository "${CANDIDATE}" "${VERSION}" "${DOWNLOAD_URL}" || return 1
+    	else
+       		__jenvtool_utils_echo_red "${DOWNLOAD_URL}"
+       		return 1
+    	fi
 }
