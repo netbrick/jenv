@@ -189,6 +189,9 @@ __jenvtool_initialize() {
 #jenv tool init
 __jenvtool_initialize
 
+#update repositories on startup
+__jenvtool_update_repositories
+
 # change directory with jenvrc support
 cd () {
   builtin cd "$@"
