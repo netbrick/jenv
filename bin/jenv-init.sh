@@ -190,7 +190,7 @@ __jenvtool_initialize() {
 __jenvtool_initialize
 
 #update repositories on startup
-__jenvtool_update_repositories
+__jenvtool_update_repositories > /dev/null
 
 # change directory with jenvrc support
 cd () {
