@@ -127,7 +127,7 @@ __jenvtool_initialize() {
     if [[ ! -d "${JENV_DIR}/repo/central" ]] ; then
         jenv_central_repo_file="${JENV_DIR}/tmp/repo-central.zip"
         mkdir -p "${JENV_DIR}/repo"
-        curl -s "${JENV_SERVICE}/info.zip?osName=${JENV_OS_NAME}&platform=${JENV_MACHINE_PLATFORM}" > "${jenv_central_repo_file}"
+        curl -L -s "${JENV_SERVICE}/info.zip?osName=${JENV_OS_NAME}&platform=${JENV_MACHINE_PLATFORM}" > "${jenv_central_repo_file}"
         if [[ "${cygwin}" == 'true' ]]; then
             unzip -qo $(cygpath -w "${jenv_central_repo_file}") -d "${JENV_DIR}/repo/central"
         else
