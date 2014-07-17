@@ -22,17 +22,21 @@
 function __jenvtool_pause {
 	CANDIDATE=`echo "$1" | tr '[:upper:]' '[:lower:]'`
 	VERSION="$2"
-    if [[ -z "$2" ]]; then
-       VERSION="current"
-    fi
-    #unlink current
-    if [ -L "${JENV_DIR}/candidates/${CANDIDATE}/current" ]; then
-    	unlink "${JENV_DIR}/candidates/${CANDIDATE}/current"
-    fi
-    #remove from path
-    __jenvtool_path_remove_candidate "${CANDIDATE}" "${VERSION}"
-    #unset home
-    UPPER_CANDIDATE=`echo "${CANDIDATE}" | tr '[:lower:]' '[:upper:]'`
-    unset "${UPPER_CANDIDATE}_HOME"
-    __jenvtool_utils_echo_green "${CANDIDATE} paused!"
+    
+	if [[ -z "$2" ]]; then
+       		VERSION="current"
+    	fi
+    
+	#unlink current
+    	if [ -L "${JENV_DIR}/candidates/${CANDIDATE}/current" ]; then
+    		unlink "${JENV_DIR}/candidates/${CANDIDATE}/current"
+    	fi
+    
+	#remove from path
+    	__jenvtool_path_remove_candidate "${CANDIDATE}" "${VERSION}"
+    
+	#unset home
+    	UPPER_CANDIDATE=`echo "${CANDIDATE}" | tr '[:lower:]' '[:upper:]'`
+    	unset "${UPPER_CANDIDATE}_HOME"
+    	__jenvtool_utils_echo_green "${CANDIDATE} paused!"
 }

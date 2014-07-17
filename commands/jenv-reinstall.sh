@@ -24,12 +24,15 @@ function __jenvtool_reinstall {
 	CANDIDATE=`echo "$1" | tr '[:upper:]' '[:lower:]'`
 	VERSION="$2"
 	LOCAL_FOLDER="$3"
+	
 	if [ -d "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" ]; then
 		echo "Uninstalling ${CANDIDATE} ${VERSION}"
-	    rm -rf "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
-    fi
-    rm -rf "${JENV_DIR}/archives/${CANDIDATE}-${VERSION}.zip"
-    __jenvtool_utils_echo_green "Uninstall done!"
-    __jenvtool_install "${CANDIDATE}" "${VERSION}" "${LOCAL_FOLDER}"
+	    	rm -rf "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
+    	fi
+    
+	rm -rf "${JENV_DIR}/archives/${CANDIDATE}-${VERSION}.zip"
+    	
+	__jenvtool_utils_echo_green "Uninstall done!"
+    	__jenvtool_install "${CANDIDATE}" "${VERSION}" "${LOCAL_FOLDER}"
 }
 

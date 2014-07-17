@@ -20,13 +20,15 @@
 function __jenvtool_requirements {
 	echo "Following commands are required for jenv:"
 	echo "====================================================="
+	
 	for cmdName in sed tar git svn curl grep unzip complete
 	do
-	   type $cmdName >/dev/null 2>&1
-	   if [ "$?" -eq "0" ] ; then
-	      printf "\e[32m%12s %15s\e[00m\n" "${cmdName}" "Available"
-	   else
-	      printf "\e[31m%12s %15s\e[00m\n" "${cmdName}" "Unavailable"
-	   fi
+	   	type $cmdName >/dev/null 2>&1
+	   	
+		if [ "$?" -eq "0" ] ; then
+	      		printf "\e[32m%12s %15s\e[00m\n" "${cmdName}" "Available"
+	   	else
+	      		printf "\e[31m%12s %15s\e[00m\n" "${cmdName}" "Unavailable"
+	   	fi
 	done
 }

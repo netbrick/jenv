@@ -25,27 +25,31 @@ function __jenvtool_execute {
 	VERSION="$2"
 	SCRIPT_NAME="$3"
 	SCRIPT_ARGS="$4 $5 $6 $7 $8 $9"
+	
 	#deal with version is absent
-    if [[ ! -d "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" ]]; then
-       VERSION="current"
-       SCRIPT_NAME="$2"
-       SCRIPT_ARGS="$3 $4 $5 $6 $7 $8 $9"
-    fi
-    #validat exits
-    if [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/${SCRIPT_NAME}" ]; then
-      SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/${SCRIPT_NAME}"
-    elif [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/bin/${SCRIPT_NAME}" ]; then
-      SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/bin/${SCRIPT_NAME}"
-    elif [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/tools/${SCRIPT_NAME}" ]; then
-      SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/tools/${SCRIPT_NAME}"
-    else
-       __jenvtool_utils_echo_red "${SCRIPT_NAME} not found under ${CANDIDATE}"
-    fi
-    #execute
-    if [[ ! -z "${SCRIPT_PATH}" ]]; then
-        (${SCRIPT_PATH} ${SCRIPT_ARGS})
-        unset SCRIPT_PATH
-    fi
-    unset SCRIPT_NAME
-    unset SCRIPT_ARGS
+    	if [[ ! -d "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}" ]]; then
+       		VERSION="current"
+       		SCRIPT_NAME="$2"
+       		SCRIPT_ARGS="$3 $4 $5 $6 $7 $8 $9"
+    	fi
+    
+	#validat exits
+   	if [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/${SCRIPT_NAME}" ]; then
+      		SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/${SCRIPT_NAME}"
+    	elif [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/bin/${SCRIPT_NAME}" ]; then
+      		SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/bin/${SCRIPT_NAME}"
+    	elif [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/tools/${SCRIPT_NAME}" ]; then
+      		SCRIPT_PATH="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/tools/${SCRIPT_NAME}"
+    	else
+       		__jenvtool_utils_echo_red "${SCRIPT_NAME} not found under ${CANDIDATE}"
+    	fi
+    
+	#execute
+    	if [[ ! -z "${SCRIPT_PATH}" ]]; then
+        	(${SCRIPT_PATH} ${SCRIPT_ARGS})
+        	unset SCRIPT_PATH
+    	fi
+    
+	unset SCRIPT_NAME
+    	unset SCRIPT_ARGS
 }

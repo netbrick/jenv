@@ -26,16 +26,16 @@ function jenv {
 	__jenvtool_app_default_environment_variables
 	mkdir -p "${JENV_DIR}"
 
-   COMMAND="$1"
+   	COMMAND="$1"
 
-   # alias
-   if [[ "${COMMAND}" == "ls" ]]; then
-    	COMMAND="list"
-   elif [[ "${COMMAND}" == "all" ]]; then
-       	COMMAND="candidates"
-   elif [[ "${COMMAND}" == "exec" || "${COMMAND}" == "exe" ]]; then
+   	# alias
+   	if [[ "${COMMAND}" == "ls" ]]; then
+    		COMMAND="list"
+   	elif [[ "${COMMAND}" == "all" ]]; then
+       		COMMAND="candidates"
+   	elif [[ "${COMMAND}" == "exec" || "${COMMAND}" == "exe" ]]; then
          	COMMAND="execute"
-   fi
+   	fi
 
 	# Check whether the command exists as an internal function...
 	#
@@ -52,12 +52,14 @@ function jenv {
 	# Check if it is a valid command
 	CMD_FOUND=""
 	CMD_TARGET="${JENV_DIR}/commands/jenv-${COMMAND}.sh"
+	
 	if [[ -f "${CMD_TARGET}" ]]; then
 		CMD_FOUND="${CMD_TARGET}"
 	fi
 
 	# Check if it is a sourced function
 	CMD_TARGET="${JENV_DIR}/ext/jenv-${COMMAND}.sh"
+	
 	if [[ -f "${CMD_TARGET}" ]]; then
 		CMD_FOUND="${CMD_TARGET}"
 	fi
@@ -70,15 +72,18 @@ function jenv {
 
 	# Check whether the candidate exists
 	candidate_ops=(cd default execute install list pause show uninstall use which)
+	
 	if __jenvtool_utils_array_contains "candidate_ops[@]" "${COMMAND}" ; then
-        if [[ -n "$2" ]]; then
-            CANDIDATE=`echo "$2" | tr '[:upper:]' '[:lower:]'`
-            if [[ -z $(echo ${JENV_CANDIDATES[@]} | grep -w "${CANDIDATE}") ]]; then
-                __jenvtool_utils_echo_red "Stop! ${CANDIDATE} is not a valid candidate."
-                return 1
-            fi
-        fi
+        	if [[ -n "$2" ]]; then
+            		CANDIDATE=`echo "$2" | tr '[:upper:]' '[:lower:]'`
+            		
+			if [[ -z $(echo ${JENV_CANDIDATES[@]} | grep -w "${CANDIDATE}") ]]; then
+                		__jenvtool_utils_echo_red "Stop! ${CANDIDATE} is not a valid candidate."
+                		return 1
+            		fi
+        	fi
 	fi
+	
 	unset candidate_ops
 
 	# Execute the requested command

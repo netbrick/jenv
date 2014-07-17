@@ -20,37 +20,44 @@
 # @param $1 name
 # @param $2 value
 function __jenvtool_config {
-    conf_name="$1"
-    conf_value="$2"
-    if [[ -n "${conf_name}" ]]; then
-       if [ -e "${JENV_DIR}/conf/settings" ] ; then
-          echo -n "" > "${JENV_DIR}/conf/settings_new"
-          tmp_exits="false"
-          for entry in $(cat "${JENV_DIR}/conf/settings") ; do
-            name=${entry%=*}
-            value=${entry#*=}
-            if [[ "${name}" == "${conf_name}" ]]; then
-               value="${conf_value}"
-               tmp_exits="true"
-            fi
-            if [[ -n "${value}" ]] ; then
-               echo "${name}=${value}" >> "${JENV_DIR}/conf/settings_new"
-            fi
-          done
-          if [[ "${tmp_exits}" == "false" ]]; then
-            echo "${conf_name}=${conf_value}" >> "${JENV_DIR}/conf/settings_new"
-          fi
-          mv -f "${JENV_DIR}/conf/settings_new" "${JENV_DIR}/conf/settings"
-       else
-         mkdir -p "${JENV_DIR}/conf"
-         echo "${conf_name}=${conf_value}" > "${JENV_DIR}/conf/settings"
-       fi
-       __jenvtool_utils_echo_green "Config updated successfully!"
-    else
-       if [ -e "${JENV_DIR}/conf/settings" ] ; then
-         cat "${JENV_DIR}/conf/settings"
-       else
-         echo "auto=false"
-       fi
-    fi
+    	conf_name="$1"
+    	conf_value="$2"
+    
+	if [[ -n "${conf_name}" ]]; then
+       		if [ -e "${JENV_DIR}/conf/settings" ] ; then
+          		echo -n "" > "${JENV_DIR}/conf/settings_new"
+          		tmp_exits="false"
+          
+			for entry in $(cat "${JENV_DIR}/conf/settings") ; do
+            			name=${entry%=*}
+            			value=${entry#*=}
+            
+				if [[ "${name}" == "${conf_name}" ]]; then
+               				value="${conf_value}"
+               				tmp_exits="true"
+            			fi
+            
+				if [[ -n "${value}" ]] ; then
+               				echo "${name}=${value}" >> "${JENV_DIR}/conf/settings_new"
+            			fi
+          		done
+          
+			if [[ "${tmp_exits}" == "false" ]]; then
+            			echo "${conf_name}=${conf_value}" >> "${JENV_DIR}/conf/settings_new"
+          		fi
+          
+			mv -f "${JENV_DIR}/conf/settings_new" "${JENV_DIR}/conf/settings"
+       		else
+         		mkdir -p "${JENV_DIR}/conf"
+         		echo "${conf_name}=${conf_value}" > "${JENV_DIR}/conf/settings"
+       		fi
+      		
+		 __jenvtool_utils_echo_green "Config updated successfully!"
+    	else
+       		if [ -e "${JENV_DIR}/conf/settings" ] ; then
+         		cat "${JENV_DIR}/conf/settings"
+       		else
+         		echo "auto=false"
+       		fi
+    	fi
 }

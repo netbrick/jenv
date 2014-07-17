@@ -7,8 +7,9 @@ jenv_zshrc="${HOME}/.zshrc"
 
 JENV_DIR="$HOME/.jenv"
 JENV_SHELL="bash"
+
 if [ ! -z "${ZSH_NAME}" ]; then
-   JENV_SHELL="zsh"
+   	JENV_SHELL="zsh"
 fi
 
 jenv_init_snippet=$( cat << EOF
@@ -19,42 +20,42 @@ EOF
 
 echo "Attempt update of bash profiles..."
 if [ ! -f "${jenv_bash_profile}" -a ! -f "${jenv_profile}" ]; then
-    echo "#!/bin/bash" > "${jenv_bash_profile}"
-    echo "${jenv_init_snippet}" >> "${jenv_bash_profile}"
-    echo "Created and initialised ${jenv_bash_profile}"
+    	echo "#!/bin/bash" > "${jenv_bash_profile}"
+    	echo "${jenv_init_snippet}" >> "${jenv_bash_profile}"
+    	echo "Created and initialised ${jenv_bash_profile}"
 else
-    if [ -f "${jenv_bash_profile}" ]; then
-        if [[ -z `grep 'jenv-init.sh' "${jenv_bash_profile}"` ]]; then
-            echo -e "\n${jenv_init_snippet}" >> "${jenv_bash_profile}"
-            echo "Updated existing ${jenv_bash_profile}"
-        fi
-    fi
+    	if [ -f "${jenv_bash_profile}" ]; then
+        	if [[ -z `grep 'jenv-init.sh' "${jenv_bash_profile}"` ]]; then
+            		echo -e "\n${jenv_init_snippet}" >> "${jenv_bash_profile}"
+            		echo "Updated existing ${jenv_bash_profile}"
+        	fi
+    	fi
 
-    if [ -f "${jenv_profile}" ]; then
-        if [[ -z `grep 'jenv-init.sh' "${jenv_profile}"` ]]; then
-            echo -e "\n${jenv_init_snippet}" >> "${jenv_profile}"
-            echo "Updated existing ${jenv_profile}"
-        fi
-    fi
+    	if [ -f "${jenv_profile}" ]; then
+        	if [[ -z `grep 'jenv-init.sh' "${jenv_profile}"` ]]; then
+            		echo -e "\n${jenv_init_snippet}" >> "${jenv_profile}"
+            		echo "Updated existing ${jenv_profile}"
+        	fi
+    	fi
 fi
 
 if [ ! -f "${jenv_bashrc}" ]; then
-    echo "#!/bin/bash" > "${jenv_bashrc}"
-    echo "${jenv_init_snippet}" >> "${jenv_bashrc}"
-    echo "Created and initialised ${jenv_bashrc}"
+    	echo "#!/bin/bash" > "${jenv_bashrc}"
+    	echo "${jenv_init_snippet}" >> "${jenv_bashrc}"
+    	echo "Created and initialised ${jenv_bashrc}"
 else
-    if [[ -z `grep 'jenv-init.sh' "${jenv_bashrc}"` ]]; then
-        echo -e "\n${jenv_init_snippet}" >> "${jenv_bashrc}"
-        echo "Updated existing ${jenv_bashrc}"
-    fi
+    	if [[ -z `grep 'jenv-init.sh' "${jenv_bashrc}"` ]]; then
+        	echo -e "\n${jenv_init_snippet}" >> "${jenv_bashrc}"
+        	echo "Updated existing ${jenv_bashrc}"
+    	fi
 fi
 
 if [ ! -f "${jenv_zshrc}" ]; then
-  echo "Attempt update of zsh profiles..."
-  echo "${jenv_init_snippet}" >> "${jenv_zshrc}"
+  	echo "Attempt update of zsh profiles..."
+  	echo "${jenv_init_snippet}" >> "${jenv_zshrc}"
 else
-  if [[ -z `grep 'jenv-init.sh' "${jenv_zshrc}"` ]]; then
-     echo -e "\n${jenv_init_snippet}" >> "${jenv_zshrc}"
-     echo "Updated existing ${jenv_zshrc}"
-  fi
+  	if [[ -z `grep 'jenv-init.sh' "${jenv_zshrc}"` ]]; then
+     		echo -e "\n${jenv_init_snippet}" >> "${jenv_zshrc}"
+     		echo "Updated existing ${jenv_zshrc}"
+  	fi
 fi

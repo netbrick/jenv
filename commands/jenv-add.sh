@@ -22,47 +22,57 @@
 function __jenvtool_add {
 	CANDIDATE=`echo "$1" | tr '[:upper:]' '[:lower:]'`
 	mkdir -p "${JENV_DIR}/repo/local"
+	
 	# update candidates file to add candidate
 	candidates_file="${JENV_DIR}/repo/local/candidates"
 	if [ -f "${candidates_file}" ]; then
-	   CANDIDATES=($(cat "${candidates_file}"))
-	   if [[ ${#CANDIDATES[@]} == 0 ]]; then  # empty file
-	       echo -n "${CANDIDATE}" > "${candidates_file}"
-	       JENV_CANDIDATES=("${JENV_CANDIDATES[@]}" "${CANDIDATE}")
-	       export JENV_CANDIDATES
-	   else
-	      if ! __jenvtool_utils_array_contains "CANDIDATES[@]" "${CANDIDATE}"; then
-	      	  echo -n " ${CANDIDATE}" >> "${candidates_file}"
-	      	  JENV_CANDIDATES=("${JENV_CANDIDATES[@]}" "${CANDIDATE}")
-	      	  export JENV_CANDIDATES
-	      fi
-	   fi
-	   unset CANDIDATES
+		CANDIDATES=($(cat "${candidates_file}"))
+	   	
+		if [[ ${#CANDIDATES[@]} == 0 ]]; then  # empty file
+	       		echo -n "${CANDIDATE}" > "${candidates_file}"
+	       		JENV_CANDIDATES=("${JENV_CANDIDATES[@]}" "${CANDIDATE}")
+	       		export JENV_CANDIDATES
+	   	else
+	      		if ! __jenvtool_utils_array_contains "CANDIDATES[@]" "${CANDIDATE}"; then
+	      	  		echo -n " ${CANDIDATE}" >> "${candidates_file}"
+	      	  		JENV_CANDIDATES=("${JENV_CANDIDATES[@]}" "${CANDIDATE}")
+	      	  		export JENV_CANDIDATES
+	      		fi
+	   	fi
+	   
+		unset CANDIDATES
 	else
-	   echo -n "${CANDIDATE}" > "${candidates_file}"
-	   echo "Local Candidate List" > "${JENV_DIR}/repo/local/candidates.txt"
-	   echo "==================================" >> "${JENV_DIR}/repo/local/candidates.txt"
+	   	echo -n "${CANDIDATE}" > "${candidates_file}"
+	   	echo "Local Candidate List" > "${JENV_DIR}/repo/local/candidates.txt"
+	   	echo "==================================" >> "${JENV_DIR}/repo/local/candidates.txt"
 	fi
+	
 	unset candidates_file
+	
 	# add version
 	if [[ ! -z "$2" ]] ; then
-        mkdir -p "${JENV_DIR}/repo/local/version"
-        version_file="${JENV_DIR}/repo/local/version/${CANDIDATE}.txt"
-        if [ -f "${version_file}" ]; then
-           VERSIONS=($(cat "${version_file}"))
-           if [[ ${#VERSIONS[@]} == 0 ]]; then  # empty file
-              echo -n "$2" > "${version_file}"
-           else
-              # append version
-              if ! __jenvtool_utils_array_contains "VERSIONS[@]" "$2"; then
-                 echo -n " $2" >> "${version_file}"
-              fi
-           fi
-           unset VERSIONS
-        else
-          echo -n "$2" > "${version_file}"
-        fi
-        unset version_file
+        	mkdir -p "${JENV_DIR}/repo/local/version"
+        	version_file="${JENV_DIR}/repo/local/version/${CANDIDATE}.txt"
+        	
+		if [ -f "${version_file}" ]; then
+           		VERSIONS=($(cat "${version_file}"))
+           		
+			if [[ ${#VERSIONS[@]} == 0 ]]; then  # empty file
+              			echo -n "$2" > "${version_file}"
+           		else      	
+				# append version
+              			if ! __jenvtool_utils_array_contains "VERSIONS[@]" "$2"; then
+                				echo -n " $2" >> "${version_file}"
+              			fi
+           		fi
+           
+			unset VERSIONS
+        	else
+          		echo -n "$2" > "${version_file}"
+        	fi
+        
+		unset version_file
 	fi
+	
 	echo "${CANDIDATE} with $2 added!"
 }

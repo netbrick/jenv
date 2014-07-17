@@ -19,10 +19,10 @@
 # display candidates
 # @Globals JENV_DIR
 function __jenvtool_candidates {
-     for repo in $(ls -1 "${JENV_DIR}/repo" 2> /dev/null); do
-         if [ -f "${JENV_DIR}/repo/${repo}/candidates.txt" ]; then
-            echo ""
-            cat "${JENV_DIR}/repo/${repo}/candidates.txt"
-         fi
-     done
+	for repo in $(ls -1 "${JENV_DIR}/repo" 2> /dev/null); do
+         	if [ -f "${JENV_DIR}/repo/${repo}/candidates.txt" ]; then
+            		echo ""
+            		cat "${JENV_DIR}/repo/${repo}/candidates.txt"
+         	fi
+     	done
 }

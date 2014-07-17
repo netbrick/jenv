@@ -28,18 +28,23 @@ function __jenvtool_use {
 		__jenvtool_utils_echo_red "Stop! ${CANDIDATE} ${VERSION} is not installed."
 		return 1
 	fi
-    # validate current version and used version
-    CURRENT=$(__jenvtool_candidate_current_version "${CANDIDATE}")
-    if [[  "${CURRENT}" != "$2" ]]; then
-        # Just update the *_HOME and PATH for this shell.
-       	UPPER_CANDIDATE=`echo "${CANDIDATE}" | tr '[:lower:]' '[:upper:]'`
-       	export "${UPPER_CANDIDATE}_HOME"="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
-       	if ! __jenvtool_utils_string_contains "$PATH" "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"; then
-       	    __jenvtool_path_add_candidate "${CANDIDATE}" "${VERSION}"
-       	fi
-       	if [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/autorun.sh" ]; then
-       	   source "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/autorun.sh"
-       	fi
+    
+	# validate current version and used version
+    	CURRENT=$(__jenvtool_candidate_current_version "${CANDIDATE}")
+    
+	if [[  "${CURRENT}" != "$2" ]]; then
+        	# Just update the *_HOME and PATH for this shell.
+       		UPPER_CANDIDATE=`echo "${CANDIDATE}" | tr '[:lower:]' '[:upper:]'`
+       		export "${UPPER_CANDIDATE}_HOME"="${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"
+       	
+		if ! __jenvtool_utils_string_contains "$PATH" "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}"; then
+       	    		__jenvtool_path_add_candidate "${CANDIDATE}" "${VERSION}"
+       		fi
+       	
+		if [ -f "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/autorun.sh" ]; then
+       	   		source "${JENV_DIR}/candidates/${CANDIDATE}/${VERSION}/autorun.sh"
+       		fi
 	fi
+	
 	__jenvtool_utils_echo_green "Using ${CANDIDATE} version ${VERSION} in this shell."
 }
