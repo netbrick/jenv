@@ -57,7 +57,7 @@ Second list available version for the candidate, such as maven candidate:
 Final install the candidate with the version:
 
     $ jenv install maven 3.1.1
-In your terminal, input mvn --version to check the installation.
+In your terminal, input `mvn --version` to check the installation.
 
 If you want to list all installed candidates, please use following command.
 
