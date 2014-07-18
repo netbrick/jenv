@@ -18,6 +18,9 @@
 
 # update jenv self
 function __jenvtool_selfupdate {
-	source "${JENV_DIR}/commands/selfupdate.sh"
+	# Update from git	
+	cd $JENV_DIR
+	git pull
+
 	source "${JENV_DIR}/bin/jenv-init.sh" ${JENV_SHELL}
 }
