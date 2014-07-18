@@ -34,6 +34,7 @@ if [ -z "${JENV_AUTO}" ]; then
 fi
 
 JENV_SHELL="bash"
+
 if [ -n "${ZSH_NAME}" ]; then
    	setopt completealiases
    	JENV_SHELL="zsh"
