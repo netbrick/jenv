@@ -22,5 +22,5 @@ function __jenvtool_selfupdate {
 	cd $JENV_DIR
 	git pull
 
-	source "${JENV_DIR}/bin/jenv-init.sh" ${JENV_SHELL}
+	source "${JENV_DIR}/bin/jenv-init.sh"
 }
