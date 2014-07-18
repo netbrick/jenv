@@ -13,7 +13,7 @@ It provides a convenient command line interface for installing, switching, remov
    * Bash completion support. Use TAB to complete command name, candidate name and version
    * Multi OS support, such as Mac, Linux and Windows(Cygwin)
 
-## Installat jenv on Mac and Linux
+## Install jenv on Mac and Linux
 Open your favourite terminal, go to your home directory and enter the following commands:
 
     $ git clone https://github.com/netbrick/jenv.git
@@ -36,13 +36,13 @@ and install. After install please execute following command:
 
 for Mac users, after you install JDK from dmg file, please execute:
 
-   $ jenv install java 1.7.0_45 system
+    $ jenv install java 1.7.0_45 system
 
 and jenv will link the java version automatically.
 
 You can also install Java by http url:
 
-   $ jenv install java 1.7.0_45  http://xxxx.com/java/java-1.7.0_45.zip
+    $ jenv install java 1.7.0_45  http://xxxx.com/java/java-1.7.0_45.zip
 
 ## Install canidates
 
@@ -91,14 +91,14 @@ You can clone your jenv between multi hosts.
 ## jenvrc support
 jenvrc is jenv setup file which contains candidate and the version as following:
 
-       java=1.6.0_45
-       maven=3.0.5
+    java=1.6.0_45
+    maven=3.0.5
 
 After you enter this directory, jenv will setup environment automatically.
 Now You can use jenvrc to setup Java environment for each of your individual projects.
 You can use jenv init to generate jenvrc file.
 
-      $ jenv init
+    $ jenv init
 
 Note:  Line started with # means line comment.
 
