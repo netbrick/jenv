@@ -17,7 +17,7 @@ It provides a convenient command line interface for installing, switching, remov
 Open your favourite terminal, go to your home directory and enter the following commands:
 
     $ git clone https://github.com/netbrick/jenv.git
-    $ $HOME/.jenv/bin/jenv-init.sh
+    $ $HOME/.jenv/commands/install.sh
 
 If the environment needs tweaking for jenv to be installed, the installer will prompt you accordingly and ask you to restart.
 
