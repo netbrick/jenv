@@ -23,7 +23,7 @@ If the environment needs tweaking for jenv to be installed, the installer will p
 
 Finally, you have to add following line to your .profile
 
-    $ [[ -s "${JENV_DIR}/bin/jenv-init.sh" ]] && source "${JENV_DIR}/bin/jenv-init.sh" && source "${JENV_DIR}/commands/completion.sh"
+    $ source "${JENV_DIR}/bin/jenv-init.sh" && source "${JENV_DIR}/commands/completion.sh"
 
 
 ## Install Java
@@ -98,7 +98,7 @@ After you enter this directory, jenv will setup environment automatically.
 Now You can use jenvrc to setup Java environment for each of your individual projects.
 You can use jenv init to generate jenvrc file.
 
-      $jenv init
+      $ jenv init
 
 Note:  Line started with # means line comment.
 
@@ -108,8 +108,8 @@ autorun.sh is a script under candidate home, and jenv will execute the script au
 ## Install local candidates
 If you want to add custom candidate into jenv, please add candidate into local repository.
 
-    $jenv add spike 0.0.1
-    $jenv install spike 0.0.1 git@github.com:linux-china/groovy_scripts.git
+    $ jenv add spike 0.0.1
+    $ jenv install spike 0.0.1 git@github.com:linux-china/groovy_scripts.git
 
 An example to install MangoDB 2.4.9 as following:
 
@@ -118,18 +118,18 @@ An example to install MangoDB 2.4.9 as following:
 
 Then you can install candidate from git repository, and you can update candidate by following command:
 
-    $jenv update spike
+    $ jenv update spike
 
 If the candidate is absent, jenv will update all git or svn based candidates.
 
-    $jenv update
+    $ jenv update
 
 Update all git or svn based candidates.
 
 ## How to update jenv
 Go to your jenv directory and execute folloring command.
 
-   $ git pull
+    $ git pull
 
 ## jenv IntelliJ IDEA plugin
 With jenv IDEA plugin, you don't need to setup Java SDK, Maven, and so on, and jenv IDEA plugin can scan jenv directory
