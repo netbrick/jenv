@@ -103,7 +103,7 @@ function __jenvtool_sync_jenv_to_dest {
    	ssh "$dest_host" "rm -f ~/jenv.tar"
    	
 	# .bash_profile check
-   	ssh "$dest_host" "source ~/.jenv/commands/add-hook.sh"
+   	ssh "$dest_host" "source ~/.jenv/commands/update-profile.sh"
    	
 	cd -
 }
