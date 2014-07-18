@@ -129,7 +129,7 @@ Update all git or svn based candidates.
 ## How to update jenv
 Go to your jenv directory and execute folloring command.
 
-    $ git pull
+    $ jenv selfupdate
 
 ## jenv IntelliJ IDEA plugin
 With jenv IDEA plugin, you don't need to setup Java SDK, Maven, and so on, and jenv IDEA plugin can scan jenv directory
