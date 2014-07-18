@@ -21,11 +21,6 @@ Open your favourite terminal, go to your home directory and enter the following 
 
 If the environment needs tweaking for jenv to be installed, the installer will prompt you accordingly and ask you to restart.
 
-Finally, you have to add following line to your .profile
-
-    $ source "${JENV_DIR}/bin/jenv-init.sh" && source "${JENV_DIR}/commands/completion.sh"
-
-
 ## Install Java
 Because I can not redistribute Java SDK, so you should download it from http://www.oracle.com/technetwork/java/javase/downloads/index.html
 and install. After install please execute following command:
