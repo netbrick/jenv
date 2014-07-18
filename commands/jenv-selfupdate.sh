@@ -19,8 +19,10 @@
 # update jenv self
 function __jenvtool_selfupdate {
 	# Update from git	
+	ORIG_PATH=$PWD
 	cd $JENV_DIR
 	git pull
+	cd $ORIG_PATH
 
 	source "${JENV_DIR}/bin/jenv-init.sh"
 }
