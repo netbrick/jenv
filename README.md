@@ -17,9 +17,9 @@ It provides a convenient command line interface for installing, switching, remov
 Open your favourite terminal, go to your home directory and enter the following commands:
 
     $ git clone https://github.com/netbrick/jenv.git
-    $ $HOME/.jenv/commands/install.sh
+    $ bash $HOME/.jenv/commands/install.sh
 
-If the environment needs tweaking for jenv to be installed, the installer will prompt you accordingly and ask you to restart.
+If the environment needs tweaking for jenv to be installed, the installer will prompt you accordingly.
 
 ## Install Java
 Because I can not redistribute Java SDK, so you should download it from http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -52,6 +52,7 @@ Second list available version for the candidate, such as maven candidate:
 Final install the candidate with the version:
 
     $ jenv install maven 3.1.1
+
 In your terminal, input `mvn --version` to check the installation.
 
 If you want to list all installed candidates, please use following command.
@@ -66,20 +67,20 @@ The candidate's versions are maintained on the central repository. To keep updat
 ### Repeatable Development Environments with jenv
 You can clone your jenv between multi hosts.
 
-* clone your local jenv to remote host: jenv clone user@remote-host
-* clone your local candidate to remote host:  jenv clone candidate version user@remote-host
-* clone candidate from remote host: jenv clone user@remote-host canidate version
+* clone your local jenv to remote host: `jenv clone user@remote-host` 
+* clone your local candidate to remote host:  `jenv clone candidate version user@remote-host`
+* clone candidate from remote host: `jenv clone user@remote-host canidate version`
 
 ## Other Commands
 
-  * uninstall: Uninstall the candidate with the version, such as jenv uninstall maven 3.0.4
-  * reinstall: Reinstall the candidate with the version, such as jenv reinstall maven 3.0.5
-  * use: Use the candidate with the version, such as jenv use maven 3.0.4
+  * uninstall: Uninstall the candidate with the version, such as `jenv uninstall maven 3.0.4` 
+  * reinstall: Reinstall the candidate with the version, such as `jenv reinstall maven 3.0.5` 
+  * use: Use the candidate with the version, such as `jenv use maven 3.0.4` 
   * which: Which version for candidate
   * pause: Pause candidate usage
-  * exe: Execute script under candidate, such as "jenv execute tomcat startup.sh" or "jenv execute tomee startup.sh"
-  * default: Make the version as default, such as jenv default maven 3.0.4
-  * cd: Change directory to candidate install directory, such as jenv cd groovy
+  * exe: Execute script under candidate, such as `jenv execute tomcat startup.sh` or `jenv execute tomee startup.sh`
+  * default: Make the version as default, such as `jenv default maven 3.0.4`
+  * cd: Change directory to candidate install directory, such as `jenv cd groovy` 
   * show: Display candidate's detail information
   * requirements: Display jenv requirements
 
@@ -91,7 +92,7 @@ jenvrc is jenv setup file which contains candidate and the version as following:
 
 After you enter this directory, jenv will setup environment automatically.
 Now You can use jenvrc to setup Java environment for each of your individual projects.
-You can use jenv init to generate jenvrc file.
+You can use jenv init to generate .jenvrc file.
 
     $ jenv init
 
