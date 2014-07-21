@@ -17,7 +17,7 @@ It provides a convenient command line interface for installing, switching, remov
 Open your favourite terminal, go to your home directory and enter the following commands:
 
     $ git clone https://github.com/netbrick/jenv.git
-    $ bash/zsh $HOME/.jenv/commands/install.sh
+    $ bash(or zsh) $HOME/.jenv/commands/install.sh
 
 Install script will check for dependencies and initializes jenv.
 
