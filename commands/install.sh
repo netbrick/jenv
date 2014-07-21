@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # Simple installation script for jenv
+if [ ! $ZSH_NAME ]; then
+	COMPLETE='complete'
+else
+        COMPLETE=''
+fi
+
 echo "Checking dependencies"
 echo "====================================================="
 
-for cmdName in sed tar git svn curl grep unzip complete
+for cmdName in sed tar git svn curl grep unzip $COMPLETE
 do
         type $cmdName >/dev/null 2>&1
 
@@ -17,5 +23,5 @@ do
 done
 
 echo -e "Running ${HOME}/.jenv/bin/jenv-init.sh ..."
-source "${HOME}/.jenv/bin/jenv-init.sh"
+source "${HOME}/.jenv/bin/jenv-init.sh" && echo "Done, jenv was successfully installed"
 

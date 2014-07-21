@@ -18,10 +18,16 @@
 
 # display jenv version
 function __jenvtool_requirements {
+	if [ ! $ZSH_NAME ]; then
+                COMPLETE='complete'
+        else
+                COMPLETE=''
+        fi
+
 	echo "Following commands are required for jenv:"
 	echo "====================================================="
 	
-	for cmdName in sed tar git svn curl grep unzip complete
+	for cmdName in sed tar git svn curl grep unzip $COMPLETE
 	do
 	   	type $cmdName >/dev/null 2>&1
 	   	
