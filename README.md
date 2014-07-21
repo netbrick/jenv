@@ -17,9 +17,9 @@ It provides a convenient command line interface for installing, switching, remov
 Open your favourite terminal, go to your home directory and enter the following commands:
 
     $ git clone https://github.com/netbrick/jenv.git
-    $ bash $HOME/.jenv/commands/install.sh
+    $ bash/zsh $HOME/.jenv/commands/install.sh
 
-If the environment needs tweaking for jenv to be installed, the installer will prompt you accordingly.
+Install script will check for dependencies and initializes jenv.
 
 ## Install Java
 Because I can not redistribute Java SDK, so you should download it from http://www.oracle.com/technetwork/java/javase/downloads/index.html
