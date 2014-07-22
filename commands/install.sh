@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # Simple installation script for jenv
+if [[ -z "${JENV_DIR}" ]]; then
+	JENV_DIR="$HOME/.jenv"
+fi
+
 if [ ! $ZSH_NAME ]; then
 	COMPLETE='complete'
 else
@@ -22,5 +26,22 @@ do
         fi
 done
 
+if [[ $(whoami) == 'root' ]]; then
+
+	touch '/etc/profile.d/jenv.sh'
+	if [[ -z `grep "jenv-init.sh" "${HOME}/jenv.sh"` ]]; then
+		jenv_profile_global=$( echo '[[ -z `grep "jenv-init.sh" "${HOME}/.profile"` ]] && export JENV_GLOBAL="true" && export JENV_DIR=/usr/local/jenv && source "${JENV_DIR}/bin/jenv-init.sh" && source "${JENV_DIR}/commands/completion.sh"' )
+
+		echo -e $jenv_profile_global >> /etc/profile.d/jenv.sh
+	fi
+
+	JENV_DIR='/usr/local/jenv'
+	JENV_GLOBAL='true'
+
+	export JENV_DIR
+	export JENV_GLOBAL
+fi
+
 echo -e "Running ${JENV_DIR}/bin/jenv-init.sh ..."
 source "${JENV_DIR}/bin/jenv-init.sh" && echo "Done, jenv was successfully installed"
+

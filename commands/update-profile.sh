@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Dont edit user profile files on global install
+if [[ $JENV_GLOBAL ]]; then
+	return 0
+fi
+
 jenv_bash_profile="${HOME}/.bash_profile"
 jenv_profile="${HOME}/.profile"
 jenv_bashrc="${HOME}/.bashrc"
