@@ -6,7 +6,6 @@ if [[ ! "${JENV_DIR}" ]]; then
 	JENV_DIR="${JENV_DIR}/../"
 fi
 
-echo $JENV_DIR
 export JENV_DIR
 
 if [ ! $ZSH_NAME ]; then
