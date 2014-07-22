@@ -212,10 +212,10 @@ __jenvtool_initialize() {
 __jenvtool_initialize
 
 # update repositories on startup
-__jenvtool_update_repositories > /dev/null
+[[ $JENV_GLOBAL ]] || __jenvtool_update_repositories > /dev/null
 
 # update shell profile files
-[[ ! $JENV_GLOBAL ]] && source "${JENV_DIR}/commands/update-profile.sh"
+source "${JENV_DIR}/commands/update-profile.sh"
 
 # change directory with jenvrc support
 cd () {

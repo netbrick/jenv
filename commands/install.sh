@@ -29,7 +29,7 @@ done
 if [[ $(whoami) == 'root' ]]; then
 
 	touch '/etc/profile.d/jenv.sh'
-	if [[ -z `grep "jenv-init.sh" "${HOME}/jenv.sh"` ]]; then
+	if [[ -z `grep "jenv-init.sh" "/etc/profile.d/jenv.sh"` ]]; then
 		jenv_profile_global=$( echo '[[ -z `grep "jenv-init.sh" "${HOME}/.profile"` ]] && export JENV_GLOBAL="true" && export JENV_DIR=/usr/local/jenv && source "${JENV_DIR}/bin/jenv-init.sh" && source "${JENV_DIR}/commands/completion.sh"' )
 
 		echo -e $jenv_profile_global >> /etc/profile.d/jenv.sh
