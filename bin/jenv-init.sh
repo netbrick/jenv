@@ -118,8 +118,8 @@ __jenvtool_initialize() {
     	JENV_CANDIDATES_DEFAULT=("groovy" "grails" "griffon" "gradle" "vertx")
 
     	if [[ -z "${JENV_DIR}" ]]; then
-        	JENV_DIR=$( cd $( dirname $0 ) && pwd)
-        	JENV_DIR="${JENV_DIR}/../"
+        	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
+        	JENV_DIR=${JENV_DIR%bin}
 
 		if [[ "${cygwin}" == 'true' ]]; then
            		JENV_DIR="/cygdrive/c/jenv"
