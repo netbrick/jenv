@@ -215,7 +215,7 @@ __jenvtool_initialize
 __jenvtool_update_repositories > /dev/null
 
 #update shell profile files
-source "${HOME}/.jenv/commands/update-profile.sh"
+source "${JENV_DIR}/commands/update-profile.sh"
 
 # change directory with jenvrc support
 cd () {
