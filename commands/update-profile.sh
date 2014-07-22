@@ -5,7 +5,9 @@ jenv_profile="${HOME}/.profile"
 jenv_bashrc="${HOME}/.bashrc"
 jenv_zshrc="${HOME}/.zshrc"
 
-JENV_DIR="$HOME/.jenv"
+if [[ -z "${JENV_DIR}" ]]; then
+	JENV_DIR="$HOME/.jenv"
+fi
 
 JENV_SHELL="bash"
 
