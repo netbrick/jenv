@@ -1,9 +1,13 @@
 #!/bin/bash
 
 # Simple installation script for jenv
-if [[ -z "${JENV_DIR}" ]]; then
-	JENV_DIR="$HOME/.jenv"
+if [[ ! "${JENV_DIR}" ]]; then
+	JENV_DIR=$( cd $( dirname $0 ) && pwd)
+	JENV_DIR="${JENV_DIR}/../"
 fi
+
+echo $JENV_DIR
+export JENV_DIR
 
 if [ ! $ZSH_NAME ]; then
 	COMPLETE='complete'
@@ -44,4 +48,3 @@ fi
 
 echo -e "Running ${JENV_DIR}/bin/jenv-init.sh ..."
 source "${JENV_DIR}/bin/jenv-init.sh" && echo "Done, jenv was successfully installed"
-

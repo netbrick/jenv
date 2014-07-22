@@ -118,13 +118,14 @@ __jenvtool_initialize() {
     	JENV_CANDIDATES_DEFAULT=("groovy" "grails" "griffon" "gradle" "vertx")
 
     	if [[ -z "${JENV_DIR}" ]]; then
-        	JENV_DIR="$HOME/.jenv"
-        	
+        	JENV_DIR=$( cd $( dirname $0 ) && pwd)
+        	JENV_DIR="${JENV_DIR}/../"
+
 		if [[ "${cygwin}" == 'true' ]]; then
            		JENV_DIR="/cygdrive/c/jenv"
            		export JENV_OS_NAME="Cygwin"
         	fi
-        	
+
 		export JENV_DIR
     	fi
 
@@ -142,7 +143,7 @@ __jenvtool_initialize() {
         	jenv_central_repo_file="${JENV_DIR}/tmp/repo-central.zip"
         	mkdir -p "${JENV_DIR}/repo"
         	curl -s "${JENV_SERVICE}/info.zip?osName=${JENV_OS_NAME}&platform=${JENV_MACHINE_PLATFORM}" > "${jenv_central_repo_file}"
-        	
+
 		if [[ "${cygwin}" == 'true' ]]; then
             		unzip -qo $(cygpath -w "${jenv_central_repo_file}") -d "${JENV_DIR}/repo/central"
         	else
