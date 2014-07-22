@@ -24,4 +24,3 @@ done
 
 echo -e "Running ${JENV_DIR}/bin/jenv-init.sh ..."
 source "${JENV_DIR}/bin/jenv-init.sh" && echo "Done, jenv was successfully installed"
-
