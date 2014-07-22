@@ -119,7 +119,7 @@ __jenvtool_initialize() {
 
     	if [[ -z "${JENV_DIR}" ]]; then
         	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
-        	JENV_DIR=${JENV_DIR%bin}
+        	JENV_DIR=${JENV_DIR%/bin}
 
 		if [[ "${cygwin}" == 'true' ]]; then
            		JENV_DIR="/cygdrive/c/jenv"
