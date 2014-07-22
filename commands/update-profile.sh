@@ -11,7 +11,7 @@ jenv_bashrc="${HOME}/.bashrc"
 jenv_zshrc="${HOME}/.zshrc"
 
 if [[ -z "${JENV_DIR}" ]]; then
-	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd)
+	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
         JENV_DIR=${JENV_DIR%/commands}
 fi
 
