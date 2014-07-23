@@ -213,7 +213,7 @@ __jenvtool_initialize() {
 __jenvtool_initialize
 
 # update repositories on startup
-[[ $JENV_GLOBAL ]] || __jenvtool_update_repositories > /dev/null
+[ $JENV_GLOBAL ] || __jenvtool_update_repositories > /dev/null
 
 # update shell profile files
 source "${JENV_DIR}/commands/update-profile.sh"

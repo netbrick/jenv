@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Dont edit user profile files on global install
-if [[ $JENV_GLOBAL ]]; then
+if [ $JENV_GLOBAL ]; then
 	return 0
 fi
 
