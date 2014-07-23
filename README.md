@@ -16,8 +16,8 @@ It provides a convenient command line interface for installing, switching, remov
 ## Install jenv on Mac and Linux
 Open your favourite terminal, go to your home directory and enter the following commands:
 
-    $ git clone https://github.com/netbrick/jenv.git
-    $ bash(or zsh) $HOME/.jenv/commands/install.sh
+    $ git clone https://github.com/netbrick/jenv.git "path_to_jenv"
+    $ bash(or zsh) "path_to_jenv"/commands/install.sh
 
 Install script will check for dependencies and initializes jenv.
 
