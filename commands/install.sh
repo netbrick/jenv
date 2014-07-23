@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Simple installation script for jenv
-if [[ ! "${JENV_DIR}" ]]; then
-	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
+if [ ! $JENV_DIR ]; then
+	JENV_DIR=$( cd $( dirname "${BASH_SOURCE[0]:-$0}" ) && pwd )
 	JENV_DIR=${JENV_DIR%/commands}
 fi
 
