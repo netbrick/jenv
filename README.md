@@ -21,6 +21,10 @@ Open your favourite terminal, go to your home directory and enter the following 
 
 Install script will check for dependencies and initializes jenv.
 
+Jenv can be installed as system wide for all users, this install can be overriden by user jenv installation.
+For system wide installation just run commands above as root. (Don't forget to clone jenv into folder, where all 
+users have at least read permissions eg. `/usr/local/jenv/`) 
+
 ## Install Java
 Because I can not redistribute Java SDK, so you should download it from http://www.oracle.com/technetwork/java/javase/downloads/index.html
 and install. After install please execute following command:
